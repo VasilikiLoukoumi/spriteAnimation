@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Sprite Animation with......Vanilla Js!!</title>
+
+
+
+</head>
+
+
+<body>
+<div class="container">
+<blockquote>Spritesheet is a creation of <a target="_blank" href="https://kirby144.deviantart.com/art/Daisy-x4-Sprite-sheet-100681530">The_Kirby Sprite Productions</a>
+, while trees belong to <a target="_blank" href="http://www.freestockphotos.biz/stockphoto/15928">nicubunu</a>.
+</blockquote>
+<p style="text-align:center"><canvas id="myCanvas" width="600" height="600">Sorry, your browser does not support canvas technology....</canvas></p>
+
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+let img = new Image();
+let bg = new Image();
+let sx = 0;
+let sy = 0;
+let dx = 0;
+let dy = 0;
+let frameWidth = 54;
+let frameHeight = 79;
+let totalFrames = 4;
+let currentFrame = 0;
+let move = 10;
+let count = 0;
+let treeX = 10;
+let treeY = 10;
+
+let init = function(){
+bg.src = "bg.png";
+img.src = "sprites.png";
+setInterval(draw,1000/10);
+};
+
+let draw = function(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.drawImage(bg,treeX,treeY, 300, 300);
+ctx.drawImage(bg,treeX+280,treeY+55, 300, 300);
+ctx.drawImage(bg,treeX+100,treeY+200, 300, 300);
+move+=2;
+ctx.drawImage(img,sx,sy,frameWidth,frameHeight,dx,dy+move,frameWidth,frameHeight);
+sy += frameHeight+1;
+if(sy>=81){
+sy=0;
+}
+if(dy+move>=canvas.height){
+move=0;
+}
+};
+
+init();
+
+</script>
+
+</body>
+
+
+
+
+
+
+</html>
